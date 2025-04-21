@@ -7,6 +7,10 @@ import com.example.login_auth_api.domain.user.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+
 @Service
 public class TokenService {
 
@@ -19,12 +23,16 @@ public class TokenService {
             String token = JWT.create()
                     .withIssuer("login-auth-api")
                     .withSubject(user.getEmail())
-                    .withExpiresAt()
+                    .withExpiresAt(this.generateExpirationDate())
                     .sign(algorithm);
             return token;
 
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Error runtime autentication");
         }
+    }
+
+    private Instant generateExpirationDate(){
+        return LocalDateTime.now().plusHours(2).toInstant((ZoneOffset.of("-03:00")));
     }
 }
