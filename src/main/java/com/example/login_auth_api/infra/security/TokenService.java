@@ -28,7 +28,7 @@ public class TokenService {
             return token;
 
         } catch (JWTCreationException exception) {
-            throw new RuntimeException("Error runtime autentication");
+            throw new RuntimeException("Error runtime authentication");
         }
     }
 
