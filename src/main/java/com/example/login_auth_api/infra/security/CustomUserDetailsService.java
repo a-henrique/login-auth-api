@@ -1,6 +1,6 @@
 package com.example.login_auth_api.infra.security;
 
-import com.example.login_auth_api.domain.repositories.UserRepository;
+import com.example.login_auth_api.repositories.UserRepository;
 import com.example.login_auth_api.domain.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
